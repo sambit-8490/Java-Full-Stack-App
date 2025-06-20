@@ -1,25 +1,23 @@
 package com.example.employee;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
 
-    @Autowired
-    private EmployeeRepository employeeRepository;
+    private List<Employee> employees = new ArrayList<>();
 
     @PostMapping
     public String saveEmployee(@RequestBody Employee employee) {
-        employeeRepository.save(employee);
+        employees.add(employee);
         return "Employee details saved successfully!";
     }
 
     @GetMapping
     public List<Employee> getAllEmployees() {
-        return employeeRepository.findAll();
+        return employees;
     }
 }

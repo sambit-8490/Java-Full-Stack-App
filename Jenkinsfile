@@ -1,5 +1,5 @@
 pipeline {
-    agent{label 'stockholm-instance-node'}
+    agent any
     stages {
         stage ('clone') {
             steps {
@@ -28,7 +28,7 @@ pipeline {
     }
     post{
         always{
-            mail to: 'sambitkumarchaudhury786@gmail.com',
+            mail to: 'sambitkumar.choudhuri@massoftind.com',
             subject: "Deploy java application using jenkins #${BUILD_ID}",
             body: "This is jenkins url ${BUILD_URL}"
         }
